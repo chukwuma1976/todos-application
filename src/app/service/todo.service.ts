@@ -31,4 +31,13 @@ export class TodoService {
   deleteTodo(id: string) {
     return this.http.delete(this.path + "/" + id);
   }
+
+  getDate(date: string) {
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const newDate = new Date(date);
+    const month = newDate.getMonth();
+    const day = newDate.getDate();
+    const year = newDate.getFullYear();
+    return months[month] + ' ' + day + ', ' + year;
+  }
 }

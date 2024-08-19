@@ -17,7 +17,8 @@ import { MatCardModule } from '@angular/material/card';
     MatFormFieldModule,
     FormsModule,
     MatButtonModule,
-    MatCardModule],
+    MatCardModule
+  ],
   providers: [provideNativeDateAdapter()],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './add-todo.component.html',

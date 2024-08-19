@@ -5,16 +5,24 @@
     margin-right: 15%;
 }
 
+.form-update {
+    justify-content: center;
+}
+
 .todo-update {
     width: 100%;
 }
 
 .this-task {
-    width: 60%
+    width: 50%;
+}
+
+.this-date {
+    width: 30%
 }
 
 input {
-    width: 60%
+    width: 50%;
 }
 
 p {
