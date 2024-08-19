@@ -1,16 +1,23 @@
 import { Component } from '@angular/core';
 import { TodoService } from '../service/todo.service';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Todo } from '../todo';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-todos-list',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, NgIf, FormsModule, MatInputModule, MatFormFieldModule, MatButtonModule],
   templateUrl: './todos-list.component.html',
   styleUrl: './todos-list.component.css'
 })
 export class TodosListComponent {
+
+  task: any;
+  updateTodo!: string;
   todos: Todo[] = [];
 
   constructor(private todoService: TodoService) { }
@@ -20,7 +27,30 @@ export class TodosListComponent {
       this.todos = data;
       console.log(this.todos);
     })
-    this.todoService.deleteTodo('210b8eb4-da0b-42c4-9fe6-249bb468abab')
-      .subscribe(data => console.log(data));
   }
+
+  onDelete(id: string) {
+    this.todoService.deleteTodo(id).subscribe(data => {
+      console.log(this.todos);
+    });
+    this.todos = this.todos.filter(todo => todo.id !== id);
+  }
+
+  allowUpdate(todo: any) {
+    this.updateTodo = todo.id;
+    this.task = todo.task;
+  }
+
+  onSubmitUpdate(task: any, todo: Todo) {
+    const updatedTodo = {
+      id: todo.id,
+      task: task || todo.task,
+      date: todo.date,
+    }
+    this.todoService.updateTodo(updatedTodo).subscribe(data => console.log(data));
+    this.todos = this.todos.map(el => el.id === todo.id ? updatedTodo : el);
+    this.updateTodo = "";
+    this.task = "";
+  }
+
 }

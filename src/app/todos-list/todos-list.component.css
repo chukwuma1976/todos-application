@@ -1,0 +1,28 @@
+.todo {
+    display: flex;
+    flex-direction: row;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.todo-update {
+    width: 100%;
+}
+
+.this-task {
+    width: 60%
+}
+
+input {
+    width: 60%
+}
+
+p {
+    color: blue;
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+}

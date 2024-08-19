@@ -33,6 +33,7 @@ export class AddTodoComponent {
     console.log(todo);
     const { task, date } = todo.form.value
     this.todoService.addTodo({ task, date }).subscribe(data => console.log(data));
+    todo.reset();
   }
 
 }

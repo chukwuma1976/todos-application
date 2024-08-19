@@ -1,3 +1,18 @@
-<ul>
-    <li *ngFor="let todo of todos">{{todo.task}}</li>
-</ul>
+<div>
+    <div *ngFor="let todo of todos">
+        <div class="todo">
+            <p class="this-task">{{todo.task}}</p>
+            <button mat-button (click)="allowUpdate(todo)">Update</button>
+            <button mat-button (click)="onDelete(todo.id)">Delete</button>
+        </div>
+        <div class="todo" *ngIf="updateTodo===todo.id">
+            <form (ngSubmit)="onSubmitUpdate(task, todo)">
+                <mat-form-field class="todo-update">
+                    <mat-label>Update Task</mat-label>
+                    <input matInput name="task" [(ngModel)]="task">
+                </mat-form-field>
+                <button mat-raised-button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
