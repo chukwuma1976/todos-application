@@ -7,9 +7,13 @@
                 <form (ngSubmit)="onSubmitUpdate(task, todo)">
                     <mat-form-field class="todo-update">
                         <input matInput name="task" [(ngModel)]="task" required>
+                        <button mat-mini-fab type="submit">
+                            <mat-icon fontIcon="check"></mat-icon>
+                        </button>
+                        <button mat-mini-fab (click)="hideForm()">
+                            <mat-icon fontIcon="close_small"></mat-icon>
+                        </button>
                     </mat-form-field>
-                    <button mat-raised-button type="submit">Submit</button>
-                    <button mat-mini-fab (click)="hideForm()">Hide</button>
                 </form>
             </div>
             <button mat-button (click)="allowUpdate(todo)">

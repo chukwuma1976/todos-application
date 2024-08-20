@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-add-todo',
@@ -17,7 +18,8 @@ import { MatCardModule } from '@angular/material/card';
     MatFormFieldModule,
     FormsModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    NgIf
   ],
   providers: [provideNativeDateAdapter()],
   changeDetection: ChangeDetectionStrategy.OnPush,
